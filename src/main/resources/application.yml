@@ -1,0 +1,60 @@
+spring:
+  security:
+    user:
+      name: subasi
+      password: 123456
+  datasource:
+    url: jdbc:postgresql://localhost:5432/degree-coach
+    username: subasi
+    password: 123456
+    driver-class-name: org.postgresql.Driver
+    hikari:
+      minimumIdle: 5
+      maximumPoolSize: 20
+      idleTimeout: 30000
+      poolName: SpringBootJPAHikariCP
+      maxLifetime: 200000
+      connectionTimeout: 30000
+      connection-test-query: SELECT 1
+  jpa:
+    properties:
+      jakarta:
+        persistence:
+          create-database-schemas: true
+          schema-generation:
+            database:
+              action: update
+      hibernate:
+        generate_statistics: false
+        jdbc:
+          fetch_size: 1000
+          lob.non_contextual_creation: true
+        ddl-auto: update
+        hbm2dll:
+          create_namespaces: true
+          auto: update
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        default_schema: degree_coach
+        show_sql: true
+        format_sql: true
+        connection:
+          url: jdbc:postgresql://localhost:5432/degree-coach
+          password: 123456
+          username: subasi
+          driver_class: org.postgresql.Driver
+  liquibase:
+    enabled: true
+    default-schema: degree_coach
+    drop-first: false
+    url: jdbc:postgresql://localhost:5432/degree-coach
+    user: subasi
+    password: 123456
+    driver-class-name: org.postgresql.Driver
+
+# swagger-ui custom path
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+  api-docs:
+    path: /api-docs
+
